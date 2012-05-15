@@ -56,7 +56,7 @@ classdef ArrayPerformanceTest
                     if (strcmp(method, ...
                             'testGrowMatlabExampleLinkedList') ...
                             && (self.range(i) >= ...
-                            get(0, 'recursionLimit') - 10))
+                            get(0, 'recursionLimit')/2 - 10))
                         i = i - 1;
                         break;
                     end
@@ -121,10 +121,6 @@ classdef ArrayPerformanceTest
             end
         end
         
-                
-        function testGrowingArrayOutsideMethod(self, N)
-            grow(N);
-        end
         
         function testPreallocatedCell(self, N)
             C = cell(1, N);
