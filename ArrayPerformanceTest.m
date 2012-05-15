@@ -15,7 +15,7 @@ classdef ArrayPerformanceTest
         function self = ArrayPerformanceTest(tests)
             if ~exist('tests', 'var')
                 mc = metaclass(self);
-                tests = cellfun(mc.Methods()', @(x)method{1}.Name, ...
+                tests = cellfun(@(x)x.Name, mc.Methods()', ...
                                 'UniformOutput', 0);
                 tests = tests(strncmp(tests, 'test', 4));
             end
