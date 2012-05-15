@@ -1,4 +1,4 @@
 containers_shootout
 ===================
 
-measurement of container performance.
+This measures the performance of collection creation and fill in Matlab (and other languages.)
