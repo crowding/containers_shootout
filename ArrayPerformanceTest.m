@@ -89,9 +89,9 @@ classdef ArrayPerformanceTest
                     [colors(mod(i, numel(colors))+1) '-' shapes(mod(i, numel(shapes)) + 1)]);
             end
             if numel(measured) <= 6
-                legend(measured{:}, 'Location', 'EastOutside');
+                legend(measured{:}, 'Location', 'SouthEast');
             else
-                legend(measured{:}, 'Location', 'SouthEastInside');
+                legend(measured{:}, 'Location', 'EastOutside');
             end
             xlabel('Input size');
             ylabel('Execution time');
@@ -270,6 +270,11 @@ classdef ArrayPerformanceTest
             a = {};
             for i = 1:N
                 a = {rand() a};
+            end
+            %we have to deconstruct in a controlled way, else 
+            %matlab crashes hard here for large N.
+            for i = 1:N
+                a = a{2};
             end
         end
         
