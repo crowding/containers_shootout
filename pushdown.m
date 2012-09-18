@@ -1,6 +1,11 @@
 function pushdown(N, crash)
-    %a value of N more than about 100000 with crash=1
+    %a value of N of 1000000 with crash=1
     %usually makes matlab crash hard.
+    %
+    %Observe:
+    %pushdown(1000000, 0)
+    %pushdown(1000000, 1)
+    
     a = {};
     for i = 1:N
         a = {rand() a};
@@ -8,8 +13,8 @@ function pushdown(N, crash)
     
     if ~exist('crash', 'var') || ~crash
         %we have to deconstruct in a controlled way.
-        %matlab crashes hard here if you let it try to deallocate all in
-        %one go.
+        %matlab crashes hard here if you let it try to let it decide how to
+        %free memory.
         for i = 1:N
             a = a{2};
         end
